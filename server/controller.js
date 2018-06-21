@@ -3,8 +3,8 @@ const axios = require ('axios');
 module.exports = {
 
 
-
-login: (req, res) => {
+// Student Login
+studLogin: (req, res) => {
     console.log('login works')
     const payload = {
         client_id: process.env.REACT_APP_AUTH0_CLIENT_ID,
@@ -13,9 +13,6 @@ login: (req, res) => {
         grant_type: 'authorization_code',
         redirect_uri: `http://${req.headers.host}/auth/callback`
       };
-
-
-
 
   function tradeCodeForAccessToken() {
       console.log("1", payload)
@@ -50,6 +47,46 @@ login: (req, res) => {
     })
   }
 
+  function tradeAccessTokenForUserInfo(accessTokenResponse){
+    return axios.get(`https://${process.env.REACT_APP_AUTH0_DOMAIN}/userinfo?access_token=${accessTokenResponse.data.access_token}`)
+
+}
+
+  
+tradeCodeForAccessToken()
+  .then(tradeAccessTokenForUserInfo)
+  .then(storeStudentInfoInDataBase)
+  .catch(error => {
+      console.log('Server error', error);
+      res.status(500).send('Check server for error');
+  })
+  
+},
+
+// Professor login
+profLogin: (req, res) => {
+    console.log('login works')
+    const payload = {
+        client_id: process.env.REACT_APP_AUTH0_CLIENT_ID,
+        client_secret: process.env.REACT_APP_AUTH0_CLIENT_SECRET,
+        code: req.query.code,
+        grant_type: 'authorization_code',
+        redirect_uri: `http://${req.headers.host}/auth/callback`
+      };
+
+
+
+
+  function tradeCodeForAccessToken() {
+      console.log("1", payload)
+    return axios.post(`https://${process.env.REACT_APP_AUTH0_DOMAIN}/oauth/token`, payload);
+  }
+
+  function tradeAccessTokenForUserInfo(accessTokenResponse) {
+    const accessToken = accessTokenResponse.data.access_token;
+    return axios.get(`https://${process.env.REACT_APP_AUTH0_DOMAIN}/userinfo/?access_token=${accessToken}`);
+  }
+
   function storeProfessorInfoInDataBase(userInfoResponse) {
     console.log(userInfoResponse)
   const userData = userInfoResponse.data;
@@ -81,7 +118,7 @@ console.log("2", userData)
   
 tradeCodeForAccessToken()
   .then(tradeAccessTokenForUserInfo)
-  .then(storeUserInfoInDataBase)
+  .then(storeProfessorInfoInDataBase)
   .catch(error => {
       console.log('Server error', error);
       res.status(500).send('Check server for error');

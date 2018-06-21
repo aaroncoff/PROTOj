@@ -1,0 +1,1 @@
+SELECT * FROM professors WHERE ProfID || LOWER(FirstName) || LOWER(LastName) || LOWER(University) || LOWER(Major) || LOWER(Email) LIKE '%' || LOWER($1) || '%';

@@ -19,8 +19,13 @@ massive( process.env.CONNECTION_STRING).then( dbInstance => {
   app.set( 'db', dbInstance);
 }).catch( err => console.log('db connection error', err) );
 
-app.get('/studentCallback',controller.login);
-app.get('/professorCallback',controller.login);
+app.get('/studentCallback',controller.studLogin);
+app.get('/professorCallback',controller.profLogin);
+app.get('/user-data', controller.getProfessor);
+
+
+
+
 // app.get('/user', controller.getUser);
 // app.post('/api/logout', controller.logout);
 // app.put('/api/user/:id', controller.editProfile);
