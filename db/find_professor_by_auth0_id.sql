@@ -1,0 +1,1 @@
+SELECT * FROM professors WHERE email = ${userData.email};

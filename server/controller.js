@@ -16,6 +16,7 @@ login: (req, res) => {
 
 
 
+
   function tradeCodeForAccessToken() {
       console.log("1", payload)
     return axios.post(`https://${process.env.REACT_APP_AUTH0_DOMAIN}/oauth/token`, payload);
@@ -26,10 +27,11 @@ login: (req, res) => {
     return axios.get(`https://${process.env.REACT_APP_AUTH0_DOMAIN}/userinfo/?access_token=${accessToken}`);
   }
 
-  function storeUserInfoInDataBase(userInfoResponse) {
+  function storeStudentInfoInDataBase(userInfoResponse) {
+      console.log(userInfoResponse)
     const userData = userInfoResponse.data;
   console.log("2", userData)
-    return req.app.get('db').find_user_by_auth0_id(userData.sub).then(users => {
+    return req.app.get('db').find_student_by_auth0_id(userData.email).then(users => {
         console.log("3", users)
       if (users.length) {
         const user = users[0];
@@ -47,6 +49,29 @@ login: (req, res) => {
       }
     })
   }
+
+  function storeProfessorInfoInDataBase(userInfoResponse) {
+    console.log(userInfoResponse)
+  const userData = userInfoResponse.data;
+console.log("2", userData)
+  return req.app.get('db').find_professor_by_auth0_id(userData.email).then(users => {
+      console.log("3", users)
+    if (users.length) {
+      const user = users[0];
+      req.session.user = user;
+      console.log("4", req.session.user)
+      res.redirect('/');
+    } else {
+      const createData = [userData.sub, userData.email, userData.name, userData.picture];
+
+      return req.app.get('db').create_user(createData).then(newUsers => {
+        const user = newUsers[0];
+        req.session.user = user
+        res.redirect('/');
+      })
+    }
+  })
+}
 
   function tradeAccessTokenForUserInfo(accessTokenResponse){
     return axios.get(`https://${process.env.REACT_APP_AUTH0_DOMAIN}/userinfo?access_token=${accessTokenResponse.data.access_token}`)

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import ReactDOM from 'react-dom';
-import Login from '../../Login';
+import LoginStudent from '../../LoginStudent';
 
 export default class StudProf extends Component{
     constructor() {
@@ -20,7 +20,7 @@ export default class StudProf extends Component{
     }
 
     login() {
-        const redirectUri = encodeURIComponent(`${window.location.origin}/auth/callback`);
+        const redirectUri = encodeURIComponent(`${window.location.origin}/auth/studentCallback`);
     window.location = `https://${process.env.REACT_APP_AUTH0_DOMAIN}/authorize?client_id=${process.env.REACT_APP_AUTH0_CLIENT_ID}&scope=openid%20profile%20email&redirect_uri=${redirectUri}&response_type=code`;
     }
     
@@ -33,7 +33,7 @@ export default class StudProf extends Component{
 
                 New Student 
                 <h1>
-                   <Login/>
+                   <LoginStudent/>
                 </h1>
                 {/* <button className ="btn3"><Link to="./ProjDash" className="dash">My Projects</Link></button> */}
             </div>
