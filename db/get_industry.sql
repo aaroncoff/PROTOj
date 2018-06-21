@@ -1,0 +1,2 @@
+SELECT companies.industry
+FROM  

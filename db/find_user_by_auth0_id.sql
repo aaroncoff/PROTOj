@@ -1,0 +1,1 @@
+SELECT * FROM students WHERE auth0_id = ${auth0_id};

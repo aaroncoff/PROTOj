@@ -1,0 +1,1 @@
+SELECT * FROM universities WHERE univid || LOWER(name) LIKE '%' || LOWER($1) || '%';

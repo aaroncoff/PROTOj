@@ -1,0 +1,1 @@
+INSERT INTO university (univId, name) VALUES ($1, $2);

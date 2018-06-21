@@ -1,0 +1,88 @@
+.navBar {
+    display: flex;
+}
+
+.btn1 {
+    height: 50px;
+    font-weight: bolder;
+    border: none;
+    border-radius: 5px;
+    /* background-color: #d62d20; */
+    /* display: block; */
+    width: 100px;
+    margin-bottom: 5px;
+    color: white;
+
+}
+.btn1 a {
+    text-decoration: none;
+    color: white !important;
+}
+
+.btn2 {
+    height: 50px;
+    font-weight: bolder;
+    border: none;
+    border-radius: 5px;
+    background-color: #d62d20;
+}
+
+.btn2 a {
+    text-decoration: none;
+    color: white;
+}
+
+.btn3 {
+    height: 50px;
+    font-weight: bolder;
+    border: none;
+    border-radius: 5px;
+    background-color: #d62d20;
+}
+
+.btn3 a {
+    text-decoration: none;
+    color: white;
+}
+
+.btn4 {
+    height: 50px;
+    font-weight: bolder;
+    border: none;
+    border-radius: 5px;
+    background-color: #d62d20;
+}
+
+.btn4 a {
+    text-decoration: none;
+    color: white;
+}
+
+.btn5 {
+    height: 50px;
+    font-weight: bolder;
+    border: none;
+    border-radius: 5px;
+    background-color: #d62d20;
+}
+
+.btn5 a {
+    text-decoration: none;
+    color: white;
+}
+
+.btn6 {
+    height: 50px;
+    font-weight: bolder;
+    border: none;
+    border-radius: 5px;
+    background-color: #d62d20;
+    display: block;
+    width: 100px;
+    color: white;
+}
+
+.btn6 a {
+    text-decoration: none;
+    color: white;
+}

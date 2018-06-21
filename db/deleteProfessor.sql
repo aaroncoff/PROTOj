@@ -1,0 +1,1 @@
+DELETE FROM professors WHERE profId = $1;

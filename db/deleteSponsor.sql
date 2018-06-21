@@ -1,0 +1,1 @@
+DELETE FROM sponsors WHERE sponsId = $1;
