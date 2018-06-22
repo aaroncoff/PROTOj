@@ -1,1 +1,1 @@
-SELECT * FROM students WHERE email = ${userData.email};
+SELECT * FROM students WHERE email = $1;

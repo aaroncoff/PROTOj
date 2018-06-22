@@ -18,9 +18,9 @@ export default class UnivProf extends Component{
             <div>
                 University Profile
                 
-                <button className ="btn5" ><Link to="./StudProfile" className="student">Sign In As Student</Link></button>
+                <button className ="btn5" ><Link to="./StudLogin" className="student">Sign In As Student</Link></button>
 
-                <button className ="btn2"><Link to="./ProfProf" className="Prof">Sign In As Professor</Link></button>
+                <button className ="btn2"><Link to="./ProfLogin" className="Prof">Sign In As Professor</Link></button>
             </div>
         )
     }

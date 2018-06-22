@@ -2,11 +2,11 @@
   float: bottom;
  margin-top: 50px; 
  /* background-size: 25% 25%; */
- width: 75%;
+ width: 100%;
  margin: 0 auto;
 }
 .slick-slide img {
-  width: 10%;
+  width: 20%;
 } 
 
 .slick-slider

@@ -1,11 +1,12 @@
 const axios = require ('axios');
 
+
 module.exports = {
 
 
 // Student Login
 studLogin: (req, res) => {
-    console.log('login works')
+    console.log('student login works')
     const payload = {
         client_id: process.env.REACT_APP_AUTH0_CLIENT_ID,
         client_secret: process.env.REACT_APP_AUTH0_CLIENT_SECRET,
@@ -34,14 +35,14 @@ studLogin: (req, res) => {
         const user = users[0];
         req.session.user = user;
         console.log("4", req.session.user)
-        res.redirect('/');
+        res.redirect('/studprof');
       } else {
         const createData = [userData.sub, userData.email, userData.name, userData.picture];
 
-        return req.app.get('db').create_user(createData).then(newUsers => {
+        return req.app.get('db').add_student(createData).then(newUsers => {
           const user = newUsers[0];
           req.session.user = user
-          res.redirect('/');
+          res.redirect('/studprof');
         })
       }
     })
@@ -65,7 +66,7 @@ tradeCodeForAccessToken()
 
 // Professor login
 profLogin: (req, res) => {
-    console.log('login works')
+    console.log('professor login works')
     const payload = {
         client_id: process.env.REACT_APP_AUTH0_CLIENT_ID,
         client_secret: process.env.REACT_APP_AUTH0_CLIENT_SECRET,
@@ -97,14 +98,14 @@ console.log("2", userData)
       const user = users[0];
       req.session.user = user;
       console.log("4", req.session.user)
-      res.redirect('/');
+      res.redirect('/profprof');
     } else {
       const createData = [userData.sub, userData.email, userData.name, userData.picture];
 
-      return req.app.get('db').create_user(createData).then(newUsers => {
+      return req.app.get('db').add_professor(createData).then(newUsers => {
         const user = newUsers[0];
         req.session.user = user
-        res.redirect('/');
+        res.redirect('/profprof');
       })
     }
   })
@@ -215,6 +216,23 @@ getUniversity: (req, res) => {
     })
 
 },
+
+addProfessor: (req, res) => {
+    const dbInstance = req.app.get('db')
+    dbInstance.add_professor().then( professors => {
+        res.send(professors);
+})
+},
+
+getProfessor: (req, res) => {
+    const dbInstance = req.app.get('db')
+    const {search} = req.query
+    dbInstance.get_professor(search).then(professors => {
+        res.send(professors);
+    })
+
+},
+
 getCompany: (req, res) => {
     const dbInstance = req.app.get('db')
     const {search} = req.query

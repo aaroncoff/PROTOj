@@ -14,6 +14,12 @@
   "/professorCallback": {
     "target": "http://localhost:3500"
   },
+  "/prof-data": {
+    "target": "http://localhost:3500"
+  },
+  "/stud-data": {
+    "target": "http://localhost:3500"
+  },
   "/api": {
     "target": "http://localhost:3500"
   },

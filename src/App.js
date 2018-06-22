@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import './App.css';
+// import './App.css';
 import CompProf from './Components/CompProf/CompProf.js';
-import ProfProf from './Components/ProfProf/ProfProf.js';
+import ProfLogin from './Components/ProfLogin/ProfLogin.js';
 import ProjDash from './Components/ProjDash/ProjDash.js';
 import SponsProf from './Components/SponsProf/SponsProf.js';
-import StudProfile from './Components/StudProfile/StudProfile.js';
+import StudLogin from './Components/StudLogin/StudLogin';
 import UnivProf from './Components/UnivProf/UnivProf.js';
 import routes from './routes';
 import Nav from './Components/nav/nav';
@@ -18,7 +18,8 @@ import Building from './media/building';
 import SearchBar from './Components/SearchBar/SearchBar';
 import Ticker from './Ticker';
 import Home from './Home';
-import JumboSlider from './JumboSlider';
+
+// import JumboSlider from './JumboSlider';
 // import List from './Components/SearchWindow/Searchwindow';
 // import Adobe from '.src/media/Companies/adobe.png';
 
@@ -32,8 +33,8 @@ class App extends Component {
     return (
       
       <div>
-        <div className="Navigation">
-        
+        <div>
+        <button ><Link to='/studprof'>My Profile</Link></button>
        
         
         
@@ -43,25 +44,25 @@ class App extends Component {
       <Link to="./Help" className="Help">Help</Link>
       </div>
       
-      <header className="header">
-      
+      {/* <header className="header"> */}
+{/*       
       <div className="pic-wrapper">
         <figure className="pic-1"></figure>
         <figure className="pic-2"></figure>
         <figure className="pic-3"></figure>
         <figure className="pic-4"></figure>
         
-      </div>
+      </div> */}
        {/* <JumboSlider className='jumbo'/> */}
-      <Logo/>
-      <SearchBar className="searchbar" searchFunc={(e) => this.filterNames(e)}/>
+      {/* <Logo/>
+      <SearchBar className="searchbar" searchFunc={(e) => this.filterNames(e)}/> */}
       {/* <List usernames={term}/> */}
       
       
-      </header>
+      {/* </header> */}
     </div>
     <div>
-    <Ticker className="ticker"/>
+    {/* <Ticker className="ticker"/>
        <div className="body">
        
         {/* <div className="keys"> */}
@@ -72,8 +73,7 @@ class App extends Component {
        <div className='routes'>
          {routes}
       </div>
-       
-      </div>
+
       
      <footer>
     

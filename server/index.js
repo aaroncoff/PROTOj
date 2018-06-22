@@ -21,7 +21,8 @@ massive( process.env.CONNECTION_STRING).then( dbInstance => {
 
 app.get('/studentCallback',controller.studLogin);
 app.get('/professorCallback',controller.profLogin);
-app.get('/user-data', controller.getProfessor);
+app.get('/prof-data', controller.getProfessor);
+app.get('/stud-data', controller.getStudent);
 
 
 
@@ -49,6 +50,8 @@ app.post('/api/students', controller.updateStudent)
 app.get('/api/universities', controller.getUniversity)
 
 app.get('/api/companies', controller.getCompany)
+
+app.get('/api/professors', controller.getProfessor)
 
 // app.delete('/api/students', controller.deleteStudents)
 
