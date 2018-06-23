@@ -1,1 +1,2 @@
-INSERT INTO students (studentId, firstName, lastName, university, major, email) VALUES ($1, $2, $3, $4, $5, $6);
+INSERT INTO students (email, given_name, family_name, picture) VALUES ($1, $2, $3, $4)
+RETURNING *;

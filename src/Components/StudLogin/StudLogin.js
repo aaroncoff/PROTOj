@@ -12,17 +12,6 @@ export default class StudLogin extends Component{
         }
     }
 
-    // componentDidMount() {
-
-    //     axios.get(`/api/user-data`).then(response => {
-    //         this.setState({ user: response.data.user || null})
-    //     });
-    // }
-
-    // login() {
-    //     const redirectUri = encodeURIComponent(`${window.location.origin}/auth/studentCallback`);
-    // window.location = `https://${process.env.REACT_APP_AUTH0_DOMAIN}/authorize?client_id=${process.env.REACT_APP_AUTH0_CLIENT_ID}&scope=openid%20profile%20email&redirect_uri=${redirectUri}&response_type=code`;
-    // }
     
 
     render() {
@@ -35,7 +24,7 @@ export default class StudLogin extends Component{
                 <h1>
                    <Login/>
                 </h1>
-                {/* <button className ="btn3"><Link to="./ProjDash" className="dash">My Projects</Link></button> */}
+               
             </div>
         )
     }

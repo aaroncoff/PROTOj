@@ -367,10 +367,24 @@
     }
     
     }
+    .search {
+      border-radius: 5px;
+      background-color: #E6E6FA;
+      border: none;
+      /* /* height: 30px; */
+      margin-top: 230px; 
+      margin-left: 280px
+      
+    }
     
     .searchbar{
-        float: center;
+        
+        margin-top:10px;
         z-index: 10 !important;
+        /* border-radius: 5px;
+        width: 30%;
+        margin-top: 3px;
+        margin-left: 5px; */
         
       
       }
@@ -447,20 +461,12 @@
       .Logo {
         height: 90px;
         float: left;
-        padding-top: 10px;
+        padding-top: 5px;
+        padding-left: 5px
       }
       
 
-      .search {
-        border-radius: 5px;
-        background-color: #E6E6FA;
-        border: none;
-        height: 30px;
-        width: 30%;
-        margin-top: 30px;
-        margin-left: 5px;
-        
-      }
+      
       
       .info {
         float: right;

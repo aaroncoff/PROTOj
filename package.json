@@ -9,9 +9,11 @@
     },
     "/api": {
       "target": "http://localhost:3500"
-    }
-  },
+    },
   "/professorCallback": {
+    "target": "http://localhost:3500"
+  },
+  "/sponsorCallback": {
     "target": "http://localhost:3500"
   },
   "/prof-data": {
@@ -20,9 +22,10 @@
   "/stud-data": {
     "target": "http://localhost:3500"
   },
-  "/api": {
+  "/proj-data": {
     "target": "http://localhost:3500"
-  },
+  }
+},
   "dependencies": {
     "auth0-js": "^9.6.1",
     "axios": "^0.18.0",

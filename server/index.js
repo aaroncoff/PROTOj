@@ -21,8 +21,12 @@ massive( process.env.CONNECTION_STRING).then( dbInstance => {
 
 app.get('/studentCallback',controller.studLogin);
 app.get('/professorCallback',controller.profLogin);
+app.get('/sponsorCallback', controller.sponsLogin);
 app.get('/prof-data', controller.getProfessor);
 app.get('/stud-data', controller.getStudent);
+app.get('/spons-data', controller.getSponsor);
+app.get('/api/proj-data', controller.getProject);
+app.get('/api/userData', controller.getData);
 
 
 
@@ -47,11 +51,27 @@ app.get('/api/students', controller.getStudent)
 
 app.post('/api/students', controller.updateStudent)
 
-app.get('/api/universities', controller.getUniversity)
-
-app.get('/api/companies', controller.getCompany)
-
 app.get('/api/professors', controller.getProfessor)
+
+app.post('/api/professors', controller.addProfessor)
+
+app.post('/api/sponsors', controller.addSponsor)
+
+app.get('/api/sponsors', controller.getSponsor)
+
+app.post('/api/projects', controller.addProject)
+
+app.get('/api/projects', controller.getProject)
+
+app.post('/api/projects', controller.updateProject)
+
+
+
+// app.get('/api/universities', controller.getUniversity)
+
+// app.get('/api/companies', controller.getCompany)
+
+// app.post('/api/sponsors', controller.updateSponsor)
 
 // app.delete('/api/students', controller.deleteStudents)
 

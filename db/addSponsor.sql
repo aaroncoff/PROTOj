@@ -1,1 +1,0 @@
-INSERT INTO sponsors (sponsId, company, email)  VALUES ($1, $2, $3);

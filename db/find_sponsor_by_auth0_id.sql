@@ -1,0 +1,1 @@
+SELECT * FROM sponsors WHERE email = $1;

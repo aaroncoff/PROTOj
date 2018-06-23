@@ -1,1 +1,0 @@
-INSERT INTO projects (projId, company, sponsor) VALUES ($1, $2, $3);

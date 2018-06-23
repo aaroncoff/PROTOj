@@ -4,7 +4,9 @@ import App from './App';
 import CompProf from './Components/CompProf/CompProf';
 import ProfLogin from './Components/ProfLogin/ProfLogin';
 import ProjDash from './Components/ProjDash/ProjDash';
+import CreateProj from './Components/ProjDash/CreateProj';
 import SponsProf from './Components/SponsProf/SponsProf';
+import SponsLogin from './Components/SponsProf/SponsLogin';
 import StudLogin from './Components/StudLogin/StudLogin';
 import UnivProf from './Components/UnivProf/UnivProf';
 import About from './Components/Info/About';
@@ -24,7 +26,9 @@ const routes = (
         <Route path='/compprof' component={CompProf} />
         <Route path='/proflogin' component={ProfLogin} />
         <Route path='/projdash' component={ProjDash} />
+        <Route path='/createproj' component={CreateProj} />
         <Route path='/sponsprof' component={SponsProf} />
+        <Route path='/sponslogin' component={SponsLogin} />
         <Route path='/studlogin' component={StudLogin} />
         <Route path='/univprof' component={UnivProf} />
         <Route path='/About' component={About} />

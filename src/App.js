@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 // import './App.css';
 import CompProf from './Components/CompProf/CompProf.js';
 import ProfLogin from './Components/ProfLogin/ProfLogin.js';
-import ProjDash from './Components/ProjDash/ProjDash.js';
-import SponsProf from './Components/SponsProf/SponsProf.js';
+import ProjDash from './Components/ProjDash/ProjDash';
+import SponsProf from './Components/SponsProf/SponsLogin';
 import StudLogin from './Components/StudLogin/StudLogin';
 import UnivProf from './Components/UnivProf/UnivProf.js';
 import routes from './routes';
@@ -34,14 +34,12 @@ class App extends Component {
       
       <div>
         <div>
-        <button ><Link to='/studprof'>My Profile</Link></button>
-       
-        
-        
+      
         <div className="info">
       <Link to="./About" className="About">About</Link>
       <Link to="./Contact" className="Contact">Contact</Link>
       <Link to="./Help" className="Help">Help</Link>
+      <Link to="./studprof" className="myStudProf">My Profile</Link>
       </div>
       
       {/* <header className="header"> */}
