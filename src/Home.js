@@ -19,9 +19,9 @@ import routes from './routes';
             <div>
                  <Logo/>
               <div className="Navigation">
-              <SearchBar className="searchbar" searchFunc={(e) => this.filterNames(e)}/>
+               <SearchBar className="searchbar" searchFunc={(e) => this.filterNames(e)}/>
             <header className="header">
-            
+           
             <div className="pic-wrapper">
               <figure className="pic-1"></figure>
               <figure className="pic-2"></figure>

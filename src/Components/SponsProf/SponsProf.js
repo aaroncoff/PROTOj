@@ -22,13 +22,14 @@ export default class SponsProf extends Component {
 componentDidMount() {
 
     axios.get('/api/userData').then(response => {
+        console.log('method hit-------------');
         this.setState({
             firstName: response.data.given_name,
             lastName: response.data.family_name,
             picture: response.data.picture
         })
-        console.log(response.data)
-    });
+        // console.log(response.data)
+    }).catch(err => console.log('User Data--------------', err));
 }
 
 render() {

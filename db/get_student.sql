@@ -1,1 +1,1 @@
-SELECT * FROM students WHERE StudentID || LOWER(FirstName) || LOWER(LastName) || LOWER(University) || LOWER(Major) || LOWER(Email) LIKE '%' || LOWER($1) || '%';
+SELECT * FROM students WHERE StudentID || LOWER(major) || LOWER(email) || LOWER(given_name) || LOWER(family_name) || LOWER(picture) LIKE '%' || LOWER($1) || '%';

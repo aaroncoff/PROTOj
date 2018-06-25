@@ -63,7 +63,7 @@ app.post('/api/projects', controller.addProject)
 
 app.get('/api/projects', controller.getProject)
 
-app.post('/api/projects', controller.updateProject)
+app.post('/api/projects', controller.addProject)
 
 
 

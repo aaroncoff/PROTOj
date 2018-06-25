@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Logo from '../../media/logo';
 import SearchBar from '../SearchBar/SearchBar';
 import axios from 'axios';
-import ProjPage from './ProjPage';
+
 import { Link } from 'react-router-dom';
 
 export default class CreateProj extends Component {
@@ -50,7 +50,7 @@ export default class CreateProj extends Component {
 
     setProjName = (e) => {
         this.setState(
-            {projName: e.target.value}
+            {projname: e.target.value}
         )
     }
 
@@ -82,8 +82,8 @@ export default class CreateProj extends Component {
     // }
 
     submit = () => {
-        const {projname, company, sponsor, student1, student2, student3, student4, student5, bio} = this.state;
-        axios.post('/api/projects', {projname, company, sponsor, student1, student2, student3, student4, student5, bio}).then(res => {
+        const {company, sponsor, projname, student1, student2, student3, student4, student5, bio} = this.state;
+        axios.post('/api/projects', {company, sponsor, projname, student1, student2, student3, student4, student5, bio}).then(res => {
         //    window.location.href='/projpage' 
         console.log(res)
         })
@@ -106,7 +106,7 @@ export default class CreateProj extends Component {
                     <input type='text' placeholder="Company Name" onChange={ this.setCompany }  />
                     <input type='text' placeholder="Sponsor Name" onChange={ this.setSponsor } />
                     <textarea className="inpProjBio" placeholder='Describe your project' onChange={this.setBio}/>
-                    <button className="projSubmit" onClick={() => this.submit}>Submit</button>
+                    <button className="projSubmit" onClick={() => this.submit()}>Submit</button>
                 </form>
              
             </div>

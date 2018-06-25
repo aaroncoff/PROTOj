@@ -162,6 +162,7 @@ console.log("2", userData)
     if (users.length) {
       const user = users[0];
       req.session.user = user;
+      req.session.save();
       console.log("4", req.session.user)
       res.redirect('/sponsprof');
     } else {
@@ -249,6 +250,7 @@ logout: (req,res) => {
 
 getData: (req, res) => {
     if(req.session.user){
+        console.log('req-session-user--------------', req.session.user);
         res.send(req.session.user)
     }else{res.redirect('/')};
 
@@ -274,7 +276,7 @@ getStudent: (req, res) => {
     const {search} = req.query
     console.log(search)
     dbInstance.get_student(search).then(students => {
-        res.send(students);
+        console.log(students);
     })
 
 },
@@ -320,8 +322,9 @@ addSponsor: (req, res) => {
 },
 
 addProject: (req, res) => {
+    console.log('method hit')
     const data = req.body;
-    console.log(req)
+    console.log(req.body)
     const dbInstance = req.app.get('db')
     dbInstance.add_project({
         // {projname, company, sponsor, bio}
@@ -333,8 +336,9 @@ addProject: (req, res) => {
         student3: data.student3,
         student4: data.student4,
         student5: data.student5,
-        bio: bio
+        bio: data.bio
     }).then( projects => {
+        console.log("-------------", req.sessions.user)
         req.session.user.projects = projects
         res.send('success');
 })
