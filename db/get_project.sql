@@ -1,1 +1,1 @@
-SELECT * FROM projects WHERE projname = $1;
+SELECT * FROM projects WHERE LOWER(company) || LOWER(sponsor) || LOWER(projname) || LOWER(student1)|| LOWER(student2) || LOWER(student3) || LOWER(student4) || LOWER(student5) || LOWER(bio) || LOWER(industry) LIKE '%' || LOWER($1) || '%';

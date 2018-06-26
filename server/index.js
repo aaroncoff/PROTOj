@@ -53,7 +53,7 @@ app.post('/api/students', controller.addStudent)
 app.get('/api/students/:id', controller.getStudentById)
 app.get('/api/students', controller.getStudent)
 
-app.post('/api/students', controller.updateStudent)
+app.post('/api/students/', controller.updateStudent)
 
 app.patch('/api/students/:id/university', controller.updateStudentUniversity)
 
@@ -67,7 +67,7 @@ app.get('/api/sponsors', controller.getSponsor)
 
 app.post('/api/projects', controller.addProject)
 
-app.get('/api/projects/:projname', controller.getProject)
+app.get('/api/projects', controller.getProject)
 
 app.post('/api/projects', controller.updateProject)
 

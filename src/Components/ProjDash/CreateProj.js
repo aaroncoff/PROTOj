@@ -17,7 +17,8 @@ export default class CreateProj extends Component {
             student3: 'Brad',
             student4: 'Steve',
             student5: 'Jim',
-            bio: ''
+            bio: '',
+            industry: ''
         }
     }
 
@@ -75,6 +76,12 @@ export default class CreateProj extends Component {
         )
     }
 
+    setIndustry = (e) => {
+        this.setState(
+            {industry: e.target.value}
+        )
+    }
+
     // submit = () => {
     //     axios.post('/api/projects').then(res => {
     //        this.props.history.push('/projpage')
@@ -83,8 +90,8 @@ export default class CreateProj extends Component {
 
     submit = (e) => {
         e.preventDefault();
-        const {company, sponsor, projname, student1, student2, student3, student4, student5, bio} = this.state;
-        axios.post('/api/projects', {company, sponsor, projname, student1, student2, student3, student4, student5, bio}).then(res => {
+        const {company, sponsor, projname, student1, student2, student3, student4, student5, bio, industry} = this.state;
+        axios.post('/api/projects', {company, sponsor, projname, student1, student2, student3, student4, student5, bio, industry}).then(res => {
             this.props.history.push(`/projform/${projname}`)
         console.log(res)
         })
@@ -116,10 +123,12 @@ export default class CreateProj extends Component {
             <div>
                 <Logo/>
                 <SearchBar/>
+                
                 <form>
                     <input type='text' placeholder="Project Name" onChange={ this.setProjName }  />
                     <input type='text' placeholder="Company Name" onChange={ this.setCompany }  />
                     <input type='text' placeholder="Sponsor Name" onChange={ this.setSponsor } />
+                    <input type='text' placeholder="Industry" onChange={ this.setIndustry } />
                     <textarea className="inpProjBio" placeholder='Describe your project' onChange={this.setBio}/>
                     <button className="projSubmit" onClick={(e) => this.submit(e)}>Submit</button>
                 </form>

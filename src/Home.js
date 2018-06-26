@@ -16,22 +16,25 @@ import routes from './routes';
         render() {
           return (
             
-            <div className='hero'>
-                 <Logo/>
-              <div className="Navigation">
-               <SearchBar className="searchbar" searchFunc={(e) => this.filterNames(e)}/>
-            <header className="header">
-           
+            
+            
             <div className="pic-wrapper">
+              <div>Welcome to PROTOj</div>
               <figure className="pic-1"></figure>
               <figure className="pic-2"></figure>
               <figure className="pic-3"></figure>
               <figure className="pic-4"></figure>
            
             
-            </div>
+            
+                 <Logo/>
+              <div className="Navigation">
+               <SearchBar className="searchbar" searchFunc={(e) => this.filterNames(e)}/>
+            {/* <header className="header"> */}
+           
+            
         
-            </header>
+            {/* </header> */}
 
             </div>
                 <div>

@@ -10,7 +10,8 @@ export default class ProjForm extends Component{
             projname: null,
             company: null,
             sponsor: null,
-            bio: null
+            bio: null,
+            industry: null
         }
         
     }
@@ -24,19 +25,22 @@ export default class ProjForm extends Component{
             projname: response.data[0].projname,
             company: response.data[0].company,
             sponsor: response.data[0].sponsor,
-            bio: response.data[0].bio})
+            bio: response.data[0].bio,
+            industry: response.data[0].industry})
         })
     }
     render() {
-        const {projname, company, sponsor, bio} = this.state
+        const {projname, company, sponsor, bio, industry} = this.state
         console.log('----------projname state', projname)
         return (
           <div>
-              <h1 className="projName">{projname}</h1>
+              <h1 className="projname">{this.props.projname}</h1>
+              <h2 className="industry">{industry}</h2>
               {/* <input type='text' placeholder='Specify Industry' onChange={}/> */}
-            <h2 className="company">{company}</h2>
-            <h3 className="sponsor">{sponsor}</h3>
-            <h4 className="bio">{bio}</h4>
+            <h3 className="company">{company}</h3>
+            <h4 className="sponsor">{sponsor}</h4>
+            <h5 className="bio">{bio}</h5>
+            
           
           
           </div>

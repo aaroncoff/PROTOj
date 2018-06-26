@@ -1,9 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .Navigation {
     justify-content: space-between;
     border: none;
-    padding: 30px;
+    /* padding: 30px; */
     /* background-color: red; */
-    height: 605px;
+    height: 520px;
     /* background-image: url(./media/OfficeBuilding.jpg);  */
     background-blend-mode: multiply;
     background-repeat: no-repeat;
@@ -66,7 +71,7 @@
   font-weight: bolder;
   background:url('./media/mosaic.jpg');
     background-repeat:repeat-x;
-    background-position:0 0;
+    background-position:50% 50%;
     font-family:'Luckiest Guy';
     color:transparent;
     -webkit-font-smoothing:antialiased;
@@ -83,47 +88,47 @@
 }
 @keyframes BackgroundAnimated {
   from {
-      background-position:0 0
+      background-position:100% 0
   }
   to {
-      background-position:100% 0
+      background-position:180% 0
   }
 }
   @-webkit-keyframes BackgroundAnimated {
   from {
-      background-position:0 0
+      background-position:100% 0
   }
   to {
-      background-position:100% 0
+      background-position:180% 0
   }
 }
   @-ms-keyframes BackgroundAnimated {     from {
-      background-position:0 0
+      background-position:100% 0
   }
   to {
-      background-position:100% 0
+      background-position:180% 0
   }
 }
   @-moz-keyframes BackgroundAnimated {
   from {
-      background-position:0 0
+      background-position:20% 0
   }
   to {
       background-position:100% 0
   }
 }
 
-.pic-wrapper {
+/* .pic-wrapper {
   
     /* position: absolute; */
     /* width: 100%; */
     /* height: 100%; */
-    overflow: hidden;
+    /* overflow: hidden; */
     /* height: 605px; */
-    object-fit: cover;
+    /* object-fit: cover;
     z-index: -1;
    
-  }
+  }  */
   
    
   
@@ -133,8 +138,9 @@
     top: 0;
     left: 0;
     right: 0;
-    width: 100%;
+    width: 100% !important;
     height: 100%;
+    
     /* margin-left:-180px;
     margin-top:-120px; */
     opacity: 0;
@@ -160,6 +166,7 @@
     
       opacity: 1;
       background: url(./media/Jumbos/company1.jpg) no-repeat center center;
+      background-position: cover;
       -webkit-background-size: cover;
       -moz-background-size:  cover;
       -o-background-size:  cover;

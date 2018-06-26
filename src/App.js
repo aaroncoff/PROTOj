@@ -29,11 +29,11 @@ import Home from './Home';
 
 class App extends Component {
   render() {
-    // const {term} = this.state
+   
     return (
       
       <div>
-        <div>
+        
       
         <div className="info">
       <Link to="./About" className="About">About</Link>
@@ -41,33 +41,7 @@ class App extends Component {
       <Link to="./Help" className="Help">Help</Link>
       <Link to="./studprof" className="myStudProf">My Profile</Link>
       </div>
-      
-      {/* <header className="header"> */}
-{/*       
-      <div className="pic-wrapper">
-        <figure className="pic-1"></figure>
-        <figure className="pic-2"></figure>
-        <figure className="pic-3"></figure>
-        <figure className="pic-4"></figure>
-        
-      </div> */}
-       {/* <JumboSlider className='jumbo'/> */}
-      {/* <Logo/>
-      <SearchBar className="searchbar" searchFunc={(e) => this.filterNames(e)}/> */}
-      {/* <List usernames={term}/> */}
-      
-      
-      {/* </header> */}
-    </div>
-    <div>
-    {/* <Ticker className="ticker"/>
-       <div className="body">
-       
-        {/* <div className="keys"> */}
-     
-       {/* <Nav/> */}
-       
-       {/* </div> */}
+   
        <div className='routes'>
          {routes}
       </div>
@@ -75,10 +49,10 @@ class App extends Component {
     
      </div>
     
-      </div>
+      
 
        
-
+  
         
         
     

@@ -356,6 +356,7 @@ addProject: (req, res) => {
         student4: data.student4,
         student5: data.student5,
         bio: data.bio,
+        industry: data.industry,
         user_id: req.session.user.sponsid
     }).then( projects => {
         console.log("-------------", req.session.user)
@@ -366,9 +367,9 @@ addProject: (req, res) => {
 
 getProject: (req, res) => {
     const dbInstance = req.app.get('db')
-    const {projname} = req.params
-    console.log(projname)
-    dbInstance.get_project(projname).then(projects => {
+    const {search} = req.query
+    console.log("----------getProj---hit")
+    dbInstance.get_project(search).then(projects => {
         res.send(projects);
     })
 },

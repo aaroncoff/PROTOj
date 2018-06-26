@@ -4,6 +4,7 @@ import axios from 'axios';
 import StudSearchWindow from '../SearchWindow/StudSearchWindow';
 import UnivSearchWindow from '../SearchWindow/UnivSearchWindow';
 import CompSearchWindow from '../SearchWindow/CompSearchWindow';
+import ProjSearchWindow from '../SearchWindow/ProjSearchWindow';
 import './SearchBar.css';
 
 
@@ -16,7 +17,8 @@ class SearchBar extends Component {
             term: '',
             answer1: '',
             answer2: '',
-            answer3: ''
+            answer3: '',
+            answer4: ''
           
            
         };
@@ -33,7 +35,8 @@ class SearchBar extends Component {
             this.setState({
                 answer1: res.data,
                 answer2: '',
-                answer3: ''
+                answer3: '',
+                answer4: ''
             })
         })
     }
@@ -43,7 +46,8 @@ class SearchBar extends Component {
             this.setState({
                 answer1: '',
                 answer2: response.data,
-                answer3: ''
+                answer3: '',
+                answer4: ''
             })
         })
     }
@@ -53,13 +57,24 @@ class SearchBar extends Component {
             this.setState({
                 answer1: '',
                 answer2: '',
-                answer3: response.data
+                answer3: response.data,
+                answer4: ''
             })
         })
     }
    
 
-    
+    getProjResults = () => {
+        console.log('--------hit4')
+        axios.get(`/api/projects?search=${this.state.term}`).then(response => {
+            this.setState({
+                answer1: '',
+                answer2: '',
+                answer3: '',
+                answer4: response.data
+            })
+        })
+    }
 
     render() {
         return(
@@ -70,11 +85,12 @@ class SearchBar extends Component {
                 <button className="studSearchBtn" onClick={() => this.getStudResults()}>Search by Student</button>
                 <button className="univSearchBtn" onClick={() => this.getUnivResults()}>Search by School</button>
                 <button className="compSearchBtn" onClick={() => this.getCompResults()}>Search by Company</button>
+                <button className='projSearchBtn' onClick={() => this.getProjResults()}>Search by Project</button>
                 </div>
                {this.state.answer1&&<StudSearchWindow answer1={this.state.answer1}/>}
                {this.state.answer2&&<UnivSearchWindow answer2={this.state.answer2}/>}
                {this.state.answer3&&<CompSearchWindow answer3={this.state.answer3}/>}
-            
+               {this.state.answer4&&<ProjSearchWindow answer4={this.state.answer4}/>}
             </div>
         
         )
