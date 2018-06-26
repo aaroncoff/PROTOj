@@ -81,13 +81,28 @@ export default class CreateProj extends Component {
     //     })
     // }
 
-    submit = () => {
+    submit = (e) => {
+        e.preventDefault();
         const {company, sponsor, projname, student1, student2, student3, student4, student5, bio} = this.state;
         axios.post('/api/projects', {company, sponsor, projname, student1, student2, student3, student4, student5, bio}).then(res => {
-        //    window.location.href='/projpage' 
+            this.props.history.push(`/projform/${projname}`)
         console.log(res)
         })
     }
+
+    // CREATE TABLE projects (
+    //     projid SERIAL PRIMARY KEY,
+    //     company VARCHAR,
+    //     sponsor VARCHAR,
+    //     projname VARCHAR,
+    //     student1 VARCHAR,				
+    //     student2 VARCHAR,			
+    //     student3 VARCHAR,			
+    //     student4 VARCHAR,				
+    //     student5 VARCHAR,
+    //     bio VARCHAR,
+    //     user_id INTEGER REFERENCES sponsors(sponsid),
+    //     industry VARCHAR);
 
     // submit = () => {
     //     axios.post('/api/projects').then(res => {
@@ -106,7 +121,7 @@ export default class CreateProj extends Component {
                     <input type='text' placeholder="Company Name" onChange={ this.setCompany }  />
                     <input type='text' placeholder="Sponsor Name" onChange={ this.setSponsor } />
                     <textarea className="inpProjBio" placeholder='Describe your project' onChange={this.setBio}/>
-                    <button className="projSubmit" onClick={() => this.submit()}>Submit</button>
+                    <button className="projSubmit" onClick={(e) => this.submit(e)}>Submit</button>
                 </form>
              
             </div>

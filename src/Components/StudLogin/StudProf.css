@@ -1,0 +1,68 @@
+.studProfPic {
+    height:150px;
+    margin-left: 10px;
+}
+
+.SearchBar1 {
+    border-radius: 5px;
+    background-color: #E6E6FA;
+    border: none;
+    margin-top: 5px;
+    float: center;
+    /* /* height: 30px; */
+    /* margin-top: 230px; 
+    margin-left: 280px */
+    
+  }
+
+  .SearchUnit {
+      margin: 0 auto;
+
+  }
+
+  .univAdd {
+      padding-top: 20px;
+      margin: 0 auto;
+
+  }
+
+  .userPicName {
+      Justify-items: center;
+  }
+  
+  
+
+  .header {
+    /* width: 100% !important;
+    height: 100% !important;
+    position: absolute !important;
+    z-index: 11 !important;
+    animation-name: keyframe_jxat2j, keyframe_15uf95s !important;
+    animation-duration: 800ms !important;
+    animation-timing-function: cupic-besier(0.04, 0.68, 0.18, 0.15), linear !Important; */
+    
+    
+      font-weight: bolder;
+      color: navy;
+      width: 75%;
+      /* height: 10px !important; */
+      /* margin: 0 auto; */
+      /* padding-top:300px; */
+    
+      
+      
+      
+    }
+
+    /* .Navigation {
+        justify-content: space-between;
+        border: none; */
+        /* padding: 30px; */
+        /* background-color: red; */
+        /* height: 60px !important; */
+        /* background-image: url(./media/OfficeBuilding.jpg);  */
+        /* background-blend-mode: multiply;
+        background-repeat: no-repeat; */
+        /* background-position: 60% 65%; */
+        /* background-size: cover;  */
+    /* } */

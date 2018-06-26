@@ -5,6 +5,8 @@ const massive = require('massive');
 const controller = require('./controller');
 const PORT = 3500;
 const session = require('express-session');
+// var socket = require('socket.io');
+// io = socket(server);
 
 const app = express();
 app.use(bodyParser.json());
@@ -31,9 +33,10 @@ app.get('/api/userData', controller.getData);
 
 
 
-// app.get('/user', controller.getUser);
-// app.post('/api/logout', controller.logout);
-// app.put('/api/user/:id', controller.editProfile);
+
+app.get('/user', controller.getUser);
+app.post('/api/logout', controller.logout);
+app.put('/api/user/:id', controller.editProfile);
 
 
 
@@ -47,9 +50,12 @@ app.get('/api/userData', controller.getData);
 
 app.post('/api/students', controller.addStudent)
 
+app.get('/api/students/:id', controller.getStudentById)
 app.get('/api/students', controller.getStudent)
 
 app.post('/api/students', controller.updateStudent)
+
+app.patch('/api/students/:id/university', controller.updateStudentUniversity)
 
 app.get('/api/professors', controller.getProfessor)
 
@@ -61,13 +67,11 @@ app.get('/api/sponsors', controller.getSponsor)
 
 app.post('/api/projects', controller.addProject)
 
-app.get('/api/projects', controller.getProject)
+app.get('/api/projects/:projname', controller.getProject)
 
-app.post('/api/projects', controller.addProject)
+app.post('/api/projects', controller.updateProject)
 
-
-
-// app.get('/api/universities', controller.getUniversity)
+app.get('/api/universities', controller.getUniversity)
 
 // app.get('/api/companies', controller.getCompany)
 

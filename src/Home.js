@@ -16,7 +16,7 @@ import routes from './routes';
         render() {
           return (
             
-            <div>
+            <div className='hero'>
                  <Logo/>
               <div className="Navigation">
                <SearchBar className="searchbar" searchFunc={(e) => this.filterNames(e)}/>

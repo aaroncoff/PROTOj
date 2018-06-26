@@ -1,0 +1,10 @@
+.searchBtns {
+    margin: 0 auto;
+    margin-top: 5px;
+    align-items: center;
+}
+
+.SearchUnit {
+    height: 30px;
+    align-items: center;
+}

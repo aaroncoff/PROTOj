@@ -2,7 +2,7 @@
   "name": "protj",
   "version": "0.1.0",
   "private": true,
-  "main": "server/",
+  "main": "server/index.js",
   "proxy": {
     "/studentCallback": {
       "target": "http://localhost:3500"
@@ -25,7 +25,7 @@
   "/proj-data": {
     "target": "http://localhost:3500"
   }
-},
+  },
   "dependencies": {
     "auth0-js": "^9.6.1",
     "axios": "^0.18.0",

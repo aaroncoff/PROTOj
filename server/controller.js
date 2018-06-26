@@ -16,7 +16,7 @@ studLogin: (req, res) => {
       };
 
   function tradeCodeForAccessToken() {
-      console.log("1", payload)
+    //   console.log("1", payload)
     return axios.post(`https://${process.env.REACT_APP_AUTH0_DOMAIN}/oauth/token`, payload);
   }
 
@@ -35,7 +35,8 @@ studLogin: (req, res) => {
         const user = users[0];
         req.session.user = user;
         console.log("4", req.session.user)
-        res.redirect('/studprof');
+        res.redirect(`/studprof/${req.session.user.studentid}`);
+        
       } else {
         const createData = [userData.email, userData.given_name, userData.family_name, userData.picture];
 
@@ -158,7 +159,7 @@ sponsLogin: (req, res) => {
   const userData = userInfoResponse.data;
 console.log("2", userData)
   return req.app.get('db').find_sponsor_by_auth0_id(userData.email).then(users => {
-      console.log("3", users)
+      console.log("3-----------------", users)
     if (users.length) {
       const user = users[0];
       req.session.user = user;
@@ -266,7 +267,15 @@ addStudent: (req, res) => {
 updateStudent: (req, res) => {
     const dbInstance = req.app.get('db')
     
-    dbInstance.update_student([req.body.studentId, req.body.firstName, req.body.lastName, req.body.uinversity, req.body.major, req.body.email]).then( response => {
+    dbInstance.update_student([req.body.studentId, req.body.given_name, req.family_name, req.body.uinversity, req.body.major, req.body.email]).then( response => {
+        res.status(200).send(response)
+    })
+},
+
+updateStudentUniversity: (req, res) => {
+    const dbInstance = req.app.get('db')
+    console.log(req.body)
+    dbInstance.update_student_university([req.body.university, req.params.id]).then( response => {
         res.status(200).send(response)
     })
 },
@@ -274,11 +283,21 @@ updateStudent: (req, res) => {
 getStudent: (req, res) => {
     const dbInstance = req.app.get('db')
     const {search} = req.query
-    console.log(search)
+    console.log('hit', search)
     dbInstance.get_student(search).then(students => {
-        console.log(students);
+        console.log('1', students);
+        res.send(students);
     })
 
+},
+
+getStudentById: (req, res) => {
+    // console.log(req.params.id)
+    const { id } = req.params;
+    const dbInstance = req.app.get('db')
+    dbInstance.get_student_id(id).then(student => {
+        res.send(student)
+    })
 },
 
 getUniversity: (req, res) => {
@@ -322,7 +341,7 @@ addSponsor: (req, res) => {
 },
 
 addProject: (req, res) => {
-    console.log('method hit')
+    console.log('-------------method hit')
     const data = req.body;
     console.log(req.body)
     const dbInstance = req.app.get('db')
@@ -336,18 +355,20 @@ addProject: (req, res) => {
         student3: data.student3,
         student4: data.student4,
         student5: data.student5,
-        bio: data.bio
+        bio: data.bio,
+        user_id: req.session.user.sponsid
     }).then( projects => {
-        console.log("-------------", req.sessions.user)
+        console.log("-------------", req.session.user)
         req.session.user.projects = projects
         res.send('success');
-})
+}).catch(err => console.log(err))
 },
 
 getProject: (req, res) => {
     const dbInstance = req.app.get('db')
-    const {search} = req.query
-    dbInstance.get_project(search).then(projects => {
+    const {projname} = req.params
+    console.log(projname)
+    dbInstance.get_project(projname).then(projects => {
         res.send(projects);
     })
 },
@@ -355,10 +376,22 @@ getProject: (req, res) => {
 updateProject: (req, res) => {
     const dbInstance = req.app.get('db')
     
-    dbInstance.update_project([req.body.company, req.body.sponsor, req.body.projname, req.body.student1, req.body.student2, req.body.student3, req.body.student4, req.body.student5]).then( response => {
+    dbInstance.update_project([req.body.company, req.body.sponsor, req.body.projname, req.body.student1, req.body.student2, req.body.student3, req.body.student4, req.body.student5, req.body.bio, req.body.industry]).then( response => {
         res.status(200).send(response)
     })
 }
+
+// addIndProj: (req, res) => {
+//     console.log('addIndProj Hit');
+//     const data = req.body;
+//     console.log(req.body);
+//     const dbInstance = req.app.get('db')
+//     dbInstance.add_industry_projects({
+//         industry: data.industry
+//     }).then( industry => {
+
+//     })
+// }
 
 // updateSponsor: (req, res) => {
 //     const dbInstance = req.app.get('db')

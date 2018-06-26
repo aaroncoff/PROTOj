@@ -72,11 +72,7 @@ class App extends Component {
          {routes}
       </div>
 
-      
-     <footer>
     
-     </footer>
-      
      </div>
     
       </div>

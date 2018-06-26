@@ -4,6 +4,7 @@ import axios from 'axios';
 import StudSearchWindow from '../SearchWindow/StudSearchWindow';
 import UnivSearchWindow from '../SearchWindow/UnivSearchWindow';
 import CompSearchWindow from '../SearchWindow/CompSearchWindow';
+import './SearchBar.css';
 
 
 
@@ -15,32 +16,20 @@ class SearchBar extends Component {
             term: '',
             answer1: '',
             answer2: '',
-            answer3: '',
-            // answer4: ''
+            answer3: ''
+          
            
         };
     }
 
-    // componentDidMount(){
-    //     axios.get(`/api/students`).then(user => console.log(user.data[0].given_name, user.data[0].family_name, user.data[0].studentid))
-        
-    //     axios.get(`/api/students`).then(user => {
-    //         let userArray = user.data.map(info => {
-//            return {
-//                 name: `${info.firstname} ${info.lastname}`,
-//                 id: info.studentid
-//             }
-//         })
-//         console.log(userArray)
-//     })
-// }
+
     filterNames(e){
         this.setState({term: this.state.filter(item => item.given_name.toLowerCase().includes(e.target.value.toLowerCase()))})
     }
     getStudResults = () => {
         console.log('hit', this.state.term)
         axios.get(`/api/students?search=${this.state.term}`).then(res => {
-            console.log(res)
+            console.log('1', res)
             this.setState({
                 answer1: res.data,
                 answer2: '',
@@ -68,33 +57,20 @@ class SearchBar extends Component {
             })
         })
     }
-    // getProjResults = () => {
-    //     console.log('hit', this.state.term)
-    //     axios.get(`/api/projects?search=${this.state.term}`).then(response => {
-    //         console.log(response)
-    //         this.setState({
-    //             answer1: response.data,
-    //             answer2: '',
-    //             answer3: '',
-    //             answer4: ''
-    //         })
-    //     })
-    // }
+   
 
     
 
     render() {
         return(
-            <div>
-
-
-
-
-                
+            <div className='SearchUnit'>
                 <input className="search" type="text" placeholder="Search" onChange={event => this.setState({term: event.target.value})}/>
+                
+                <div className='searchBtns'>
                 <button className="studSearchBtn" onClick={() => this.getStudResults()}>Search by Student</button>
                 <button className="univSearchBtn" onClick={() => this.getUnivResults()}>Search by School</button>
                 <button className="compSearchBtn" onClick={() => this.getCompResults()}>Search by Company</button>
+                </div>
                {this.state.answer1&&<StudSearchWindow answer1={this.state.answer1}/>}
                {this.state.answer2&&<UnivSearchWindow answer2={this.state.answer2}/>}
                {this.state.answer3&&<CompSearchWindow answer3={this.state.answer3}/>}
