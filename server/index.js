@@ -24,10 +24,10 @@ massive( process.env.CONNECTION_STRING).then( dbInstance => {
 app.get('/studentCallback',controller.studLogin);
 app.get('/professorCallback',controller.profLogin);
 app.get('/sponsorCallback', controller.sponsLogin);
-app.get('/prof-data', controller.getProfessor);
-app.get('/stud-data', controller.getStudent);
-app.get('/spons-data', controller.getSponsor);
-app.get('/api/proj-data', controller.getProject);
+// app.get('/prof-data', controller.getProfessor);
+// app.get('/stud-data', controller.getStudent);
+// app.get('/spons-data', controller.getSponsor);
+// app.get('/api/proj-data', controller.getProject);
 app.get('/api/userData', controller.getData);
 
 
@@ -51,6 +51,7 @@ app.put('/api/user/:id', controller.editProfile);
 app.post('/api/students', controller.addStudent)
 
 app.get('/api/students/:id', controller.getStudentById)
+
 app.get('/api/students', controller.getStudent)
 
 app.post('/api/students/', controller.updateStudent)
@@ -68,6 +69,8 @@ app.get('/api/sponsors', controller.getSponsor)
 app.post('/api/projects', controller.addProject)
 
 app.get('/api/projects', controller.getProject)
+
+app.get('/api/projects/:projname', controller.getProjectByName)
 
 app.post('/api/projects', controller.updateProject)
 

@@ -1,0 +1,1 @@
+SELECT * FROM sponsors WHERE LOWER(email) || LOWER(given_name) || LOWER(family_name) || LOWER(picture) LIKE '%' || LOWER($1) || '%';

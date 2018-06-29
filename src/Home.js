@@ -19,7 +19,9 @@ import routes from './routes';
             
             
             <div className="pic-wrapper">
+            <Logo/>
               <div>Welcome to PROTOj</div>
+              <SearchBar className="searchbar" searchFunc={(e) => this.filterNames(e)}/>
               <figure className="pic-1"></figure>
               <figure className="pic-2"></figure>
               <figure className="pic-3"></figure>
@@ -27,9 +29,9 @@ import routes from './routes';
            
             
             
-                 <Logo/>
+                 
               <div className="Navigation">
-               <SearchBar className="searchbar" searchFunc={(e) => this.filterNames(e)}/>
+               
             {/* <header className="header"> */}
            
             

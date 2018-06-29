@@ -281,6 +281,7 @@ updateStudentUniversity: (req, res) => {
 },
 
 getStudent: (req, res) => {
+    console.log('getStudent')
     const dbInstance = req.app.get('db')
     const {search} = req.query
     console.log('hit', search)
@@ -320,8 +321,9 @@ getProfessor: (req, res) => {
     const dbInstance = req.app.get('db')
     const {search} = req.query
     dbInstance.get_professor(search).then(professors => {
+        console.log('------------------professors', professors);
         res.send(professors);
-    })
+    }).catch(err => console.log('Get Professor Database Error-----', err));
 
 },
 
@@ -329,8 +331,10 @@ getSponsor: (req, res) => {
     const dbInstance = req.app.get('db')
     const {search} = req.query
     dbInstance.get_sponsor(search).then(sponsors => {
+        console.log('-----------------sponsors', sponsors);
         res.send(sponsors);
-    })
+    }).catch(err =>{ console.log("----getSponsor error", err)
+})
 },
 
 addSponsor: (req, res) => {
@@ -359,8 +363,8 @@ addProject: (req, res) => {
         industry: data.industry,
         user_id: req.session.user.sponsid
     }).then( projects => {
-        console.log("-------------", req.session.user)
         req.session.user.projects = projects
+        console.log("-------------", req.session.user)
         res.send('success');
 }).catch(err => console.log(err))
 },
@@ -370,6 +374,35 @@ getProject: (req, res) => {
     const {search} = req.query
     console.log("----------getProj---hit")
     dbInstance.get_project(search).then(projects => {
+        res.send(projects);
+    }).catch(err => {
+        console.log('get project error', err)
+        res.send('get project error')
+    } )
+},
+
+// getStudent: (req, res) => {
+//     console.log('getStudent')
+//     const dbInstance = req.app.get('db')
+//     const {search} = req.query
+//     console.log('hit', search)
+//     dbInstance.get_student(search).then(students => {
+//         console.log('1', students);
+//         res.send(students);
+//     })
+
+// },
+
+// app.get('/api/projects', controller.getProject)
+
+// app.get('/api/projects/:projname', controller.getProjectByName)
+
+getProjectByName: (req, res) => {
+    const dbInstance = req.app.get('db')
+    const {projname} = req.params
+    console.log("----------getProj---hit", projname)
+    dbInstance.get_projname(projname).then(projects => {
+        console.log(projects);
         res.send(projects);
     })
 },

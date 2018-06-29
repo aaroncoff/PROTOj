@@ -17,8 +17,8 @@ class StudSearchWindow extends Component{
         console.log(this.state)
         return(
             <div>
-            {answers.map((answer1, i) => <Link to={`/studprof/${answer1.studentid}`} className="studResultsLink">
-            <div key={i}>{`${answer1.given_name} ${answer1.family_name}`}</div></Link>)}
+            {answers.map((answer1, i) => <Link key={i} to={`/studprof/${answer1.studentid}`} className="studResultsLink">
+            <div >{`${answer1.given_name} ${answer1.family_name}`}</div></Link>)}
             </div>
 
         //    <Link to="./studprof" className="studResultsLink"><div className='studSearchBox'>

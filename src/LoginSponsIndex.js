@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 const SponsorLogin = (props) => {
 const redirectUri = encodeURIComponent(`${window.location.origin}/sponsorCallback`);

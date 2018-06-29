@@ -3,9 +3,9 @@
 .Navigation {
   justify-content: space-between;
   border: none;
-  padding: 30px;
+  /* padding: 30px; */
   /* background-color: red; */
-  height: 605px;
+  height: 320px;
   /* background-image: url(./media/OfficeBuilding.jpg);  */
   background-blend-mode: multiply;
   background-repeat: no-repeat;
