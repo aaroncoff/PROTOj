@@ -1,1 +1,1 @@
-SELECT * FROM sponsors WHERE LOWER(email) || LOWER(given_name) || LOWER(family_name) || LOWER(picture) LIKE '%' || LOWER($1) || '%';
+SELECT * FROM sponsors WHERE LOWER(email) LIKE CONCAT('%',LOWER($1),'%') OR LOWER(given_name) LIKE CONCAT('%',LOWER($1),'%') OR LOWER(family_name) LIKE CONCAT('%',LOWER($1),'%');

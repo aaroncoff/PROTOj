@@ -11,7 +11,8 @@ export default class CreateProj extends Component {
         this.state={
             projname: '',
             company: '',
-            sponsor: '',
+            sponsfirstname: '',
+            sponslastname: '',
             student1: 'Bob',
             student2: 'Sue',
             student3: 'Brad',
@@ -64,9 +65,15 @@ export default class CreateProj extends Component {
     }
 
 
-    setSponsor = (e) => {
+    setSponsorFirstName = (e) => {
         this.setState(
-            {sponsor: e.target.value}
+            {sponsfirstname: e.target.value}
+        )
+    }
+
+    setSponsorLastName = (e) => {
+        this.setState(
+            {sponslastname: e.target.value}
         )
     }
 
@@ -90,8 +97,8 @@ export default class CreateProj extends Component {
 
     submit = (e) => {
         e.preventDefault();
-        const {company, sponsor, projname, student1, student2, student3, student4, student5, bio, industry} = this.state;
-        axios.post('/api/projects', {company, sponsor, projname, student1, student2, student3, student4, student5, bio, industry}).then(res => {
+        const {company, projname, student1, student2, student3, student4, student5, bio, industry, sponsfirstname, sponslastname} = this.state;
+        axios.post('/api/projects', {company, projname, student1, student2, student3, student4, student5, bio, industry, sponsfirstname, sponslastname}).then(res => {
             this.props.history.push(`/projform/${projname}`)
         console.log(res)
         })
@@ -127,7 +134,8 @@ export default class CreateProj extends Component {
                 <form>
                     <input type='text' placeholder="Project Name" onChange={ this.setProjName }  />
                     <input type='text' placeholder="Company Name" onChange={ this.setCompany }  />
-                    <input type='text' placeholder="Sponsor Name" onChange={ this.setSponsor } />
+                    {/* <input type='text' placeholder="Sponsor Firstname" onChange={ this.setSponsorFirstName } />
+                    <input type='text' placeholder="Sponsor Lastname" onChange={ this.setSponsorLastName } /> */}
                     <input type='text' placeholder="Industry" onChange={ this.setIndustry } />
                     <textarea className="inpProjBio" placeholder='Describe your project' onChange={this.setBio}/>
                     <button className="projSubmit" onClick={(e) => this.submit(e)}>Submit</button>

@@ -10,9 +10,10 @@ export default class ProjForm extends Component{
             project: {},
             projname: null,
             company: null,
-            sponsor: null,
             bio: null,
-            industry: null
+            industry: null,
+            sponsfirstname: null,
+            sponslastname: null
         }
         
     }
@@ -44,7 +45,7 @@ export default class ProjForm extends Component{
         //Note: doesn't seem to be getting a response from backend
         console.log(this.props.project)
         // axios.get(`/api/projects/${this.props.match.params.projname}`)
-        axios.get(`/api/projects/:projname${this.props.project}`).then(response => {
+        axios.get(`/api/projname/${this.props.project}`).then(response => {
             console.log("-----------xxxx-------------", response.data);
         this.setState({
             project: response.data[0]
@@ -64,7 +65,7 @@ export default class ProjForm extends Component{
 }
 
     getProjectByName(){
-        axios.get(`/api/projects/${this.props.project}`).then(response => {
+        axios.get(`/api/projects/:projname${this.props.project}`).then(response => {
             console.log(response.data);
         this.setState({
             project: response.data[0]
@@ -95,7 +96,7 @@ export default class ProjForm extends Component{
         console.log(this.props, this.state)
         if(!this.state.project){
             console.log('hit')
-            this.getProjectByName()
+            this.getProjectByName
         }
         // const {projname, company, sponsor, bio, industry} = this.state
         // console.log('----------projname state', projname)
@@ -114,13 +115,14 @@ export default class ProjForm extends Component{
                     <div className='project'>
                         <div>Project Name: {project.projname}</div>
                         <div>Company: {project.company}</div>
-                        <div>Sponsor Name: {project.sponsor}</div>
+                        <div>Sponsor Name: {project.sponsfirstname}{' '}{project.sponslastname}</div>
                         <div>Project Description: {project.bio}</div>
                         <div>Industry: {project.industry}</div>
                         <div></div>
                     </div>}
 
             </div>
+
 
         
         )

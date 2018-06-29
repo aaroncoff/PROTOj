@@ -41,7 +41,7 @@ app.put('/api/user/:id', controller.editProfile);
 
 
 
-
+//note: make sure there are no 2 endpoints that are the same for different methods
 
 
 
@@ -70,7 +70,7 @@ app.post('/api/projects', controller.addProject)
 
 app.get('/api/projects', controller.getProject)
 
-app.get('/api/projects/:projname', controller.getProjectByName)
+app.get('/api/projname/:projname', controller.getProjectByName)
 
 app.post('/api/projects', controller.updateProject)
 

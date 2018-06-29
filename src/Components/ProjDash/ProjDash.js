@@ -8,6 +8,7 @@ export default class ProjDash extends Component{
         super()
 
         this.state={
+            sponsor: '',
             proj1: '',
             proj2: '',
             proj3: '',
@@ -18,13 +19,17 @@ export default class ProjDash extends Component{
 
     componentDidMount(){
         axios.get('/api/projects').then(project => {
-
+            // this.setState({
+            //     sponsor: response.data.sponsor
+                
+            // })
         })
     }
     render() {
         return (
             <div>
                 <Link to='/createproj'>Add Project</Link>
+
             </div>
         )
     }

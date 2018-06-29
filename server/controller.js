@@ -352,7 +352,6 @@ addProject: (req, res) => {
     dbInstance.add_project({
         // {projname, company, sponsor, bio}
         company: data.company,
-        sponsor: data.sponsor,
         projname: data.projname,
         student1: data.student1,
         student2: data.student2,
@@ -361,6 +360,8 @@ addProject: (req, res) => {
         student5: data.student5,
         bio: data.bio,
         industry: data.industry,
+        sponsfirstname: req.session.user.given_name,
+        sponslastname: req.session.user.family_name,
         user_id: req.session.user.sponsid
     }).then( projects => {
         req.session.user.projects = projects
@@ -372,8 +373,9 @@ addProject: (req, res) => {
 getProject: (req, res) => {
     const dbInstance = req.app.get('db')
     const {search} = req.query
-    console.log("----------getProj---hit")
+    console.log("----------getProj---hit", search)
     dbInstance.get_project(search).then(projects => {
+        console.log(projects)
         res.send(projects);
     }).catch(err => {
         console.log('get project error', err)

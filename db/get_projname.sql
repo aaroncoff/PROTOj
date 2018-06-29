@@ -1,2 +1,1 @@
-SELECT * FROM projects
-WHERE projname = $1;
+SELECT * FROM projects WHERE LOWER(company) LIKE CONCAT('%',LOWER($1),'%') OR LOWER(projname) LIKE CONCAT('%',LOWER($1),'%');
