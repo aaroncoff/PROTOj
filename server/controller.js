@@ -267,7 +267,14 @@ addStudent: (req, res) => {
 updateStudent: (req, res) => {
     const dbInstance = req.app.get('db')
     
-    dbInstance.update_student([req.body.studentId, req.body.given_name, req.family_name, req.body.uinversity, req.body.major, req.body.email]).then( response => {
+    dbInstance.update_student([
+        req.body.studentId,
+        req.body.given_name,
+        req.family_name,
+        req.body.uinversity,
+        req.body.major,
+        req.body.email
+    ]).then( response => {
         res.status(200).send(response)
     })
 },
@@ -337,11 +344,31 @@ getSponsor: (req, res) => {
 })
 },
 
+
+
 addSponsor: (req, res) => {
     const dbInstance = req.app.get('db')
-    dbInstance.add_sponsor().then( sponsors => {
+    const data = req.body
+    dbInstance.add_sponsor({
+        user_id: req.session.user.sponsid,
+        picture: req.session.user.picture,
+        given_name: req.session.user.given_name,
+        family_name: req.session.user.family_name,
+        email: data.email,
+        company: data.company,
+        industry: data.industry,
+        bio: data.bio,
+        proj1: data.projname,
+        proj2: data.student2,
+        proj3: data.student3,
+        proj4: data.student4,
+        proj5: data.student5
+    
+    }).then( sponsors => {
+        req.session.user.sponsors = sponsors
+        console.log("-----------------add spons hit", req.session.user)
         res.send(sponsors);
-})
+}).catcn(err => console.log("-----add sponsor error", err))
 },
 
 addProject: (req, res) => {
@@ -381,6 +408,23 @@ getProject: (req, res) => {
         console.log('get project error', err)
         res.send('get project error')
     } )
+},
+
+//getProjBySpons exists to give the projForm a way to identify which projects 
+//belong to which sponsors, allowing a sponsor's projects to be displayed in their projDash
+
+getProjBySpons: (req, res) => {
+    const dbInstance = req.app.get('db')
+    const {sponsid}= req.session.user
+    console.log('==============getProjSpons hit', sponsid)
+    console.log('------session user', req.session.user)
+    dbInstance.get_project_sponsor_join(sponsid).then(projects => {
+        console.log(projects)
+        res.send(projects)
+    }).catch(err => {
+        console.log('get proj by spons error', err)
+        res.send('get project by sponsor error')
+    })
 },
 
 // getStudent: (req, res) => {

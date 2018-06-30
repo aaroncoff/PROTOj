@@ -72,6 +72,8 @@ app.get('/api/projects', controller.getProject)
 
 app.get('/api/projname/:projname', controller.getProjectByName)
 
+app.get('/api/projspons/', controller.getProjBySpons)
+
 app.post('/api/projects', controller.updateProject)
 
 app.get('/api/universities', controller.getUniversity)

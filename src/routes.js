@@ -30,7 +30,7 @@ const routes = (
         <Route path='/proflogin' component={ProfLogin} />
         <Route path='/projdash' component={ProjDash} />
         <Route path='/projform/:projname' component={ProjContainer} />
-        {/* <Route path='/projform' component={ProjForm} /> */}
+        <Route path='/projform' component={ProjForm} />
         <Route path='/createproj' component={CreateProj} />
         <Route path='/sponsprof' component={SponsProf} />
         <Route path='/sponslogin' component={SponsLogin} />
